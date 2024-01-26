@@ -6,13 +6,13 @@
 #    By: arabenst <arabenst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/14 17:40:26 by arabenst          #+#    #+#              #
-#    Updated: 2022/11/23 13:57:27 by arabenst         ###   ########.fr        #
+#    Updated: 2023/10/19 13:17:17 by arabenst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
-SRCDIR	=	.
+OBJDIR	=	./obj
 
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
@@ -21,27 +21,28 @@ AR		=	ar
 ARFLAGS	=	rcs
 
 RM		=	rm
-RMFLAGS	=	-f
+RMFLAGS	=	-Rf
 
-INCFLAG	=	-I .
+SRCS	=	$(wildcard */*.c) \
+			$(wildcard */*/*.c) \
+			$(wildcard */*/*/*.c)
+OBJS	=	$(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
-DEPS	=	libft.h
-SRCS	=	$(wildcard $(SRCDIR)/*.c)
-OBJS	=	$(SRCS:.c=.o)
+$(NAME): $(OBJS)
+	@$(AR) $(ARFLAGS) $@ $^
+	@echo "Libft compiled"
+
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $@ $^
-
-%.o: %.c $(DEPS)
-	$(CC) $(CFLAGS) $(INCFLAG) -c $< -o $@
-
 clean:
-	$(RM) $(RMFLAGS) $(OBJS)
+	@$(RM) $(RMFLAGS) $(OBJDIR)
 
 fclean: clean
-	$(RM) $(RMFLAGS) $(NAME)
+	@$(RM) $(RMFLAGS) $(NAME)
 
 re: fclean all
 
