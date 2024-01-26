@@ -82,7 +82,7 @@ Implemented flags:
 - `-` Left-justify within the given field width; Right justification is the default (see width sub-specifier).
 - `0` Left-pads the number with zeroes (0) instead of spaces when padding is specified (see width sub-specifier).
 - `#` Used with x or X specifiers the value is preceeded with 0, 0x or 0X respectively for values different than zero.
-- ` `/`(space)` If no sign is going to be written, a blank space is inserted before the value.
+- `(space)` If no sign is going to be written, a blank space is inserted before the value.
 - `+` Forces to preceed the result with a plus or minus sign (+ or -) even for positive numbers. By default, only negative numbers are preceded with a - sign.
 - `.` For integer specifiers (d, i, u, x, X): precision specifies the minimum number of digits to be written. If the value to be written is shorter than this number, the result is padded with leading zeros. The value is not truncated even if the result is longer. A precision of 0 means that no character is written for the value 0.
 
