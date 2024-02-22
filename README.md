@@ -2,7 +2,7 @@
 	<p>
 	ft_printf
 	</p>
-	<img src="https://github.com/ayogun/42-project-badges/blob/main/badges/ft_printfm.png">
+	<img src="https://github.com/aaron-22766/aaron-22766/blob/main/42-badges/ft_printfm.png">
 </h1>
 
 <p align="center">
